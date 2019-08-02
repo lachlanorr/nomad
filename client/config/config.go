@@ -201,6 +201,9 @@ type Config struct {
 	// DisableRemoteExec disables remote exec targeting tasks on this client
 	DisableRemoteExec bool
 
+	// EnableInsecureTemplateFunctions ... TODO
+	EnableInsecureTemplateFunctions bool
+
 	// BackwardsCompatibleMetrics determines whether to show methods of
 	// displaying metrics for older versions, or to only show the new format
 	BackwardsCompatibleMetrics bool
@@ -262,25 +265,26 @@ func (c *Config) Copy() *Config {
 // DefaultConfig returns the default configuration
 func DefaultConfig() *Config {
 	return &Config{
-		Version:                    version.GetVersion(),
-		VaultConfig:                config.DefaultVaultConfig(),
-		ConsulConfig:               config.DefaultConsulConfig(),
-		LogOutput:                  os.Stderr,
-		Region:                     "global",
-		StatsCollectionInterval:    1 * time.Second,
-		TLSConfig:                  &config.TLSConfig{},
-		LogLevel:                   "DEBUG",
-		GCInterval:                 1 * time.Minute,
-		GCParallelDestroys:         2,
-		GCDiskUsageThreshold:       80,
-		GCInodeUsageThreshold:      70,
-		GCMaxAllocs:                50,
-		NoHostUUID:                 true,
-		DisableTaggedMetrics:       false,
-		DisableRemoteExec:          false,
-		BackwardsCompatibleMetrics: false,
-		RPCHoldTimeout:             5 * time.Second,
-		AutoFetchCNI:               false,
+		Version:                         version.GetVersion(),
+		VaultConfig:                     config.DefaultVaultConfig(),
+		ConsulConfig:                    config.DefaultConsulConfig(),
+		LogOutput:                       os.Stderr,
+		Region:                          "global",
+		StatsCollectionInterval:         1 * time.Second,
+		TLSConfig:                       &config.TLSConfig{},
+		LogLevel:                        "DEBUG",
+		GCInterval:                      1 * time.Minute,
+		GCParallelDestroys:              2,
+		GCDiskUsageThreshold:            80,
+		GCInodeUsageThreshold:           70,
+		GCMaxAllocs:                     50,
+		NoHostUUID:                      true,
+		DisableTaggedMetrics:            false,
+		DisableRemoteExec:               false,
+		EnableInsecureTemplateFunctions: false,
+		BackwardsCompatibleMetrics:      false,
+		RPCHoldTimeout:                  5 * time.Second,
+		AutoFetchCNI:                    false,
 	}
 }
 
